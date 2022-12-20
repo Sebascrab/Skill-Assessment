@@ -1,7 +1,8 @@
 
-
+// initializing slide index. 
 let slideIndex = 1;
 showSlides(slideIndex);
+
 
 function moveNext(){
     showSlides(slideIndex += 1);
@@ -16,20 +17,23 @@ function movePrevious(){
 
 }
 
-function currentSlide(n) {
-    showSlides(slideIndex = n)
+function currentSlide(card) {
+    showSlides(slideIndex = card)
 }
 
-function showSlides(n) {
+// main function to dictate slide change based on index. 
+function showSlides(card) {
     let i;
     let slides = document.getElementsByClassName('slide');
-    if (n > slides.length) {
+
+    if (card > slides.length) {
         slideIndex = 1
     }
-    if (n < 1) {
+    if (card < 1) {
         slideIndex = slides.length
     }
     
+    // slide display 
     for (let slide of slides) {
         slide.style.display = "none";
     }
@@ -39,6 +43,6 @@ function showSlides(n) {
 
 
 
-
+// click event listeners to move between slides:
 document.querySelector("#next-button").addEventListener("click", moveNext)
 document.querySelector("#previous-button").addEventListener("click", movePrevious)
